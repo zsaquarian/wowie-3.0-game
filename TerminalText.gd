@@ -18,9 +18,9 @@ func update_label():
 	label.text = text
 	var size = font.get_string_size(text)
 	label.rect_size.x = size.x
-	label.rect_size.y = size.y
+	label.rect_size.y = size.y - 10
 
 	label.rect_position.x = -size.x / 2
-	label.rect_position.y = -size.y / 2
+	label.rect_position.y = -size.y / 2 - 5
 
 	collision.shape.set_extents(Vector2(size.x / 2, size.y / 2))

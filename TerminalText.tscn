@@ -6,7 +6,6 @@
 
 [node name="TerminalText" type="StaticBody2D"]
 script = ExtResource( 1 )
-text = "SEATHUSEOTHAU"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
