@@ -11,7 +11,7 @@ extents = Vector2( 83.6766, 304.141 )
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 181.493, 33.9958 )
+position = Vector2( 953.03, 541.235 )
 
 [node name="Floor" type="Node2D" parent="."]
 
@@ -32,5 +32,3 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/LeftWall"]
 position = Vector2( -85.5978, 299.531 )
 shape = SubResource( 3 )
-
-[node name="Level" type="Node2D" parent="."]

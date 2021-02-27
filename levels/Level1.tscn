@@ -1,3 +1,37 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://TerminalText.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EndLevel.tscn" type="PackedScene" id=3]
 
 [node name="Level1" type="Node2D"]
+
+[node name="TerminalText" parent="." instance=ExtResource( 1 )]
+position = Vector2( 507.897, 541.801 )
+text = "Hello"
+prompt = true
+prompt_string = "root@arch $"
+
+[node name="TerminalText2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 177.515, 436.29 )
+
+[node name="TerminalText4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 298.677, 179.711 )
+
+[node name="TerminalText7" parent="." instance=ExtResource( 1 )]
+position = Vector2( 230.969, 129.82 )
+
+[node name="TerminalText5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 473.293, 261.674 )
+
+[node name="TerminalText6" parent="." instance=ExtResource( 1 )]
+position = Vector2( 298.677, 347.2 )
+
+[node name="TerminalText3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 344.488, 496.683 )
+
+[node name="Main" parent="." instance=ExtResource( 2 )]
+
+[node name="EndLevel" parent="." instance=ExtResource( 3 )]
+position = Vector2( 141.435, 45.0568 )
+next_world = "res://Main.tscn"
