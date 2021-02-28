@@ -1,37 +1,170 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://TerminalText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EndLevel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/font/VT323-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://levels/Level1.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "ShowText1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.8, 1.2, 1.6, 2, 2.2, 2.8, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.235, 0.225, 0.372, 0.588, 0.784, 0.77, 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "ShowText2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label2:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 1, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.843, 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "ShowText3"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label3:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 1.5, 2.7, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.059, 0.059, 0.137, 1.0, 1.0, 0.0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 163.503, 117.616 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 79.4593, 129.934 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 123.353, 213.192 )
 
 [node name="Level1" type="Node2D"]
-
-[node name="TerminalText" parent="." instance=ExtResource( 1 )]
-position = Vector2( 507.897, 541.801 )
-text = "Hello"
-prompt = true
-prompt_string = "root@arch $"
-
-[node name="TerminalText2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 177.515, 436.29 )
-
-[node name="TerminalText4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 298.677, 179.711 )
-
-[node name="TerminalText7" parent="." instance=ExtResource( 1 )]
-position = Vector2( 230.969, 129.82 )
-
-[node name="TerminalText5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 473.293, 261.674 )
-
-[node name="TerminalText6" parent="." instance=ExtResource( 1 )]
-position = Vector2( 298.677, 347.2 )
-
-[node name="TerminalText3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 344.488, 496.683 )
+script = ExtResource( 5 )
 
 [node name="Main" parent="." instance=ExtResource( 2 )]
 
 [node name="EndLevel" parent="." instance=ExtResource( 3 )]
-position = Vector2( 141.435, 45.0568 )
 next_world = "res://Main.tscn"
+
+[node name="TerminalText" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 500 )
+text = "cat empty.txt"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 400 )
+text = "echo"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 300 )
+text = "echo"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 200 )
+text = "ls -a
+./ ../ empty.txt readme.txt"
+prompt = true
+prompt_string = "root@kali"
+
+[node name="TerminalText5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 100 )
+text = "mv empy.txt empty.txt # cant type lol"
+prompt = true
+prompt_string = "root@kali"
+
+[node name="Label" type="Label" parent="."]
+margin_left = 600.606
+margin_top = 404.724
+margin_right = 968.606
+margin_bottom = 444.724
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+text = "Hey! Who made you root?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 481.811
+margin_top = 293.37
+margin_right = 1009.81
+margin_bottom = 333.37
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+text = "Do you at least know how to exit?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 517.32
+margin_top = 146.566
+margin_right = 1045.32
+margin_bottom = 272.566
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+text = "No? Fine, I'll help you out. Jump on the command history and reach the clear command."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ShowText1 = SubResource( 2 )
+anims/ShowText2 = SubResource( 4 )
+anims/ShowText3 = SubResource( 6 )
+
+[node name="Triggers" type="Node2D" parent="."]
+
+[node name="Trigger1" type="Area2D" parent="Triggers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger1"]
+position = Vector2( 786.622, 541.039 )
+shape = SubResource( 3 )
+
+[node name="Trigger2" type="Area2D" parent="Triggers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger2"]
+position = Vector2( 603.261, 535.452 )
+shape = SubResource( 5 )
+
+[node name="Trigger3" type="Area2D" parent="Triggers"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger3"]
+position = Vector2( 310.462, 544.711 )
+shape = SubResource( 7 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

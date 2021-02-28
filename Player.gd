@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2(0, 0)
 const SPEED = 100
-const JUMP_FORCE = -600
+const JUMP_FORCE = -700
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):
