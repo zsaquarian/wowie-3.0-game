@@ -15,18 +15,22 @@ func _trigger_1(body):
 		$Triggers/Trigger1.disconnect("body_entered", self, "_trigger_1")
 		$AnimationPlayer.play("ShowText1")
 		triggered = true
+		get_node("Main/Player").can_move = false
 
 func _trigger_2(body):
 	if body.name == "Player" and not triggered:
 		$Triggers/Trigger2.disconnect("body_entered", self, "_trigger_2")
 		$AnimationPlayer.play("ShowText2")
 		triggered = true
+		get_node("Main/Player").can_move = false
 
 func _trigger_3(body):
 	if body.name == "Player" and not triggered:
 		$Triggers/Trigger3.disconnect("body_entered", self, "_trigger_3")
 		$AnimationPlayer.play("ShowText3")
 		triggered = true
+		get_node("Main/Player").can_move = false
 
 func _on_animation_finished(_anim_name):
 	triggered = false
+	get_node("Main/Player").can_move = true

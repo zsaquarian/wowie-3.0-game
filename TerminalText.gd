@@ -34,7 +34,7 @@ func update_label():
 	label.rect_size.x = size.x
 	label.rect_size.y = size.y
 	if lines > 1:
-		label.rect_position.y = -size.y / 2
+		label.rect_position.y = -size.y / (2 / (lines - 1))
 	# Change collision shape extents to match word size
 	#$CollisionShape2D.get_shape().extents = Vector2(size.x / 2, size.y / 2)
 	# ^^^^ Can't do this, because it affects all words in the scene

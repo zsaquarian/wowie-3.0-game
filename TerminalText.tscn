@@ -16,7 +16,7 @@ one_way_collision = true
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+custom_colors/font_color = Color( 0.396078, 0.678431, 0.0196078, 1 )
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

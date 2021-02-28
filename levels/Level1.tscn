@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://TerminalText.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.tscn" type="PackedScene" id=2]
 [ext_resource path="res://EndLevel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/font/VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://levels/Level1.gd" type="Script" id=5]
+[ext_resource path="res://assets/CRTShader.shader" type="Shader" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -65,7 +66,20 @@ extents = Vector2( 163.503, 117.616 )
 extents = Vector2( 79.4593, 129.934 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 123.353, 213.192 )
+extents = Vector2( 243.387, 495.844 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 6 )
+shader_param/screen_width = 1024.0
+shader_param/screen_height = 600.0
+shader_param/BarrelPower = 1.1
+shader_param/color_bleeding = 0.0
+shader_param/bleeding_range_x = 3.0
+shader_param/bleeding_range_y = 3.0
+shader_param/lines_distance = 4.0
+shader_param/scan_size = 2.0
+shader_param/scanline_alpha = 0.9
+shader_param/lines_velocity = 30.0
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 5 )
@@ -73,38 +87,7 @@ script = ExtResource( 5 )
 [node name="Main" parent="." instance=ExtResource( 2 )]
 
 [node name="EndLevel" parent="." instance=ExtResource( 3 )]
-next_world = "res://Main.tscn"
-
-[node name="TerminalText" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 500 )
-text = "cat empty.txt"
-prompt = true
-prompt_string = "root@kali #"
-
-[node name="TerminalText2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 400 )
-text = "echo"
-prompt = true
-prompt_string = "root@kali #"
-
-[node name="TerminalText3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 300 )
-text = "echo"
-prompt = true
-prompt_string = "root@kali #"
-
-[node name="TerminalText4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 200 )
-text = "ls -a
-./ ../ empty.txt readme.txt"
-prompt = true
-prompt_string = "root@kali"
-
-[node name="TerminalText5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 100 )
-text = "mv empy.txt empty.txt # cant type lol"
-prompt = true
-prompt_string = "root@kali"
+next_world = "res://levels/Level2.tscn"
 
 [node name="Label" type="Label" parent="."]
 margin_left = 600.606
@@ -112,7 +95,7 @@ margin_top = 404.724
 margin_right = 968.606
 margin_bottom = 444.724
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Hey! Who made you root?"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -124,7 +107,7 @@ margin_top = 293.37
 margin_right = 1009.81
 margin_bottom = 333.37
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Do you at least know how to exit?"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -136,8 +119,8 @@ margin_top = 146.566
 margin_right = 1045.32
 margin_bottom = 272.566
 custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0.521569, 0.827451, 0.0784314, 1 )
-text = "No? Fine, I'll help you out. Jump on the command history and reach the clear command."
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+text = "No? Fine, I'll help you out. Jump on my command history and reach the clear command."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -159,12 +142,54 @@ shape = SubResource( 3 )
 [node name="Trigger2" type="Area2D" parent="Triggers"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger2"]
-position = Vector2( 603.261, 535.452 )
+position = Vector2( 566.491, 546.766 )
 shape = SubResource( 5 )
 
 [node name="Trigger3" type="Area2D" parent="Triggers"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Triggers/Trigger3"]
-position = Vector2( 310.462, 544.711 )
+position = Vector2( 171.869, 488.143 )
 shape = SubResource( 7 )
+
+[node name="TerminalTexts" type="Node2D" parent="."]
+
+[node name="TerminalText" parent="TerminalTexts" instance=ExtResource( 1 )]
+position = Vector2( 0, 500 )
+text = "cat empty.txt"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText2" parent="TerminalTexts" instance=ExtResource( 1 )]
+position = Vector2( 0, 400 )
+text = "echo \"Use the arrow keys to move around\"
+Use the arrow keys to move around"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText3" parent="TerminalTexts" instance=ExtResource( 1 )]
+position = Vector2( 0, 300 )
+text = "echo"
+prompt = true
+prompt_string = "root@kali #"
+
+[node name="TerminalText4" parent="TerminalTexts" instance=ExtResource( 1 )]
+position = Vector2( 0, 200 )
+text = "ls -a
+./ ../ empty.txt readme.txt"
+prompt = true
+prompt_string = "root@kali"
+
+[node name="TerminalText5" parent="TerminalTexts" instance=ExtResource( 1 )]
+position = Vector2( 0, 100 )
+text = "mv empy.txt empty.txt # cant type lol"
+prompt = true
+prompt_string = "root@kali"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 8 )
+margin_right = 1035.0
+margin_bottom = 631.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
