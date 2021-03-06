@@ -1,6 +1,8 @@
 # wowie-3.0-game
 
-A game made for the Wowie 3.0 Game Jam.
+A game originally made for the Wowie 3.0 Game Jam, but not finished in time.
+
+It still isn't finished
 
 Inspired by my ventures into tmux and made with Godot.
 
